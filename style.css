@@ -5,18 +5,8 @@
 }
 
 :root {
-  --text-color: white;
-  --bg-url: url(./assets/bg-mobile.jpg);
-  --stroke-color: rgba(255, 255, 255, 0.5);
-  --surface-color: rgba(255, 255, 255, 0.05);
-  --surface-color-hover: rgba(0, 0, 0, 0.02);
-  --highlight-color: rgba(255, 255, 255, 0.2);
-  --switch-bg-url: url(./assets/MoonStars.svg);
-}
-
-.light {
   --text-color: black;
-  --bg-url: url(./assets/bg-mobile-light.jpg);
+  --bg-url: url(./assets/bg-mobile.jpg);
   --stroke-color: rgba(0, 0, 0, 0.5);
   --surface-color: rgba(0, 0, 0, 0.05);
   --surface-color-hover: rgba(0, 0, 0, 0.02);
@@ -24,24 +14,17 @@
   --switch-bg-url: url(./assets/Sun.svg);
 }
 
+.light {
+  --text-color: white;
+  --bg-url: url(./assets/bg-mobile-light.jpg);
+  --stroke-color: rgba(255, 255, 255, 0.5);
+  --surface-color: rgba(255, 255, 255, 0.05);
+  --surface-color-hover: rgba(0, 0, 0, 0.02);
+  --highlight-color: rgba(255, 255, 255, 0.2);
+  --switch-bg-url: url(./assets/MoonStars.svg);
+}
+
 body {
-  /*
-  background-image: url("./assets/bg-mobile.jpg");
-  background-repeat: no-repeat;
-  background-position: top center;
-  background-size: cover;
-  */
-
-  /* background: color image repeat position/size */
-
-  /* 
-    O margin é o espaço entre um elemento e seus vizinhos, enquanto o padding é o espaço entre o conteúdo do elemento e sua borda
-  */
-
-  /* 
-    É sempre bom lembrar que para se ter uma referência da manipulação do elemento é usar a declaração: 
-    border { 1px solid red}
-  */
   background: var(--bg-url) no-repeat top center/cover;
   height: 100vh;
 }
@@ -56,22 +39,6 @@ body * {
   max-width: 588px;
   margin: 56px auto 0px;
   padding: 0 24px;
-}
-
-/* profile */
-#profile {
-  text-align: center;
-  padding: 24px;
-}
-
-#profile img {
-  width: 112px;
-}
-
-#profile p {
-  font-weight: 500;
-  line-height: 24px;
-  margin-top: 8px;
 }
 
 /* switch */
