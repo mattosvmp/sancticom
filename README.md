@@ -30,7 +30,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 O Rosarium é um agregador de links, redirecionando para o site <a href="https://pocketterco.com.br/#google_vignette">Pocket Terço</a>, a maior intenção desse projeto é o Apostolado do Santo Terço.
 
-- [Acesse o projeto finalizado, online](https://mattosvmp.github.io/study/)
+- [Acesse o projeto finalizado, online](https://mattosvmp.github.io/projeto-rosario/)
 
 ## 🔖 Layout
 
