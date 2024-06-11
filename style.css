@@ -48,6 +48,7 @@ body * {
 
   margin: 4px auto;
 }
+
 #switch button {
   width: 32px;
   height: 32px;
@@ -165,6 +166,7 @@ footer {
   from {
     left: 0;
   }
+
   to {
     left: 50%;
   }
@@ -174,7 +176,23 @@ footer {
   from {
     left: 50%;
   }
+
   to {
     left: 0;
   }
+}
+
+#message {
+  text-align: center;
+  margin-top: 20px;
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
+  padding: 15px;
+  background-color: black;
+  color: white;
+  border-radius: 30px;
+}
+
+#message.fade-out {
+  opacity: 0;
 }

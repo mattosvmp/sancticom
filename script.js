@@ -14,3 +14,7 @@ function toggleMode() {
     img.setAttribute("src", "./assets/avatar.png")
   }
 }
+
+setTimeout(function () {
+  document.getElementById('message').classList.add('fade-out');
+}, 10000);
