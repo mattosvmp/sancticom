@@ -1,7 +1,12 @@
+import Link from "next/link";
+
 function Home() {
   return (
     <div>
       <h1>Bem-vinda</h1>
+      <p>
+        <Link href="/about">Sobre</Link>
+      </p>
       <p>
         Olá minha caríssima, eu gostaria de lhe dar boas vindas nesse projeto!
       </p>
