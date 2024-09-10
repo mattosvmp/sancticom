@@ -1,7 +1,12 @@
+import Link from "next/link";
+
 function About() {
   return (
     <div>
       <h1>Sobre</h1>
+      <p>
+        <Link href="/">Início</Link>
+      </p>
       <h2>Propósito:</h2>
       <p>
         Criar uma comunidade de melhoria de vida através do Santo Rosário, nisso
