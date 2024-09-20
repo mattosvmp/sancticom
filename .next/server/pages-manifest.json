@@ -1,7 +1,10 @@
 {
+  "/about": "pages/about.html",
+  "/api/v1/migrations": "pages/api/v1/migrations.js",
+  "/api/v1/status": "pages/api/v1/status.js",
+  "/": "pages/index.html",
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/api/v1/status": "pages/api/v1/status.js",
-  "/api/v1/migrations": "pages/api/v1/migrations.js"
+  "/404": "pages/404.html"
 }
