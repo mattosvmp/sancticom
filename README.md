@@ -1,4 +1,4 @@
-# Projeto Rosário
+# Sancticom
 
 ## Este projeto está em rework, aguarde...
 
