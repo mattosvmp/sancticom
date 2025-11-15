@@ -13,8 +13,8 @@ function About() {
         <Image
           src="/logo-sancticom.svg"
           alt="Logo Sancticom"
-          width={300}
-          height={60}
+          width={2000}
+          height={100}
         />
       </div>
 
