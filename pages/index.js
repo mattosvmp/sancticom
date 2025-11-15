@@ -13,7 +13,7 @@ function Home() {
         <Image
           src="/logo-sancticom.svg"
           alt="Logo Sancticom"
-          width={2000}
+          width={700}
           height={100}
           priority
         />
