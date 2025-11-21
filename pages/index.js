@@ -24,6 +24,9 @@ function Home() {
         maxWidth: "800px",
         margin: "0 auto",
         textAlign: "center",
+        color: "#fff", // Garante cor do texto branca
+        backgroundColor: "#000", // <--- CORREÇÃO: Fundo preto explícito
+        minHeight: "100vh", // Garante o preenchimento da tela
       }}
     >
       <Head>
@@ -34,13 +37,12 @@ function Home() {
       {/* 1. SEÇÃO "EM BREVE" (Existing Content)                     */}
       {/* ========================================================== */}
       <div style={{ margin: "30px 0", width: "100%", height: "auto" }}>
-        {/* Ajustado: Garante que o container de imagem se ajuste */}
         <Image
           src="/logo-sancticom.svg"
           alt="Logo Sancticom"
           width={700}
           height={100}
-          style={{ width: "100%", height: "auto", maxWidth: "700px" }} // Adicionado estilo de ajuste de largura
+          style={{ width: "100%", height: "auto", maxWidth: "700px" }}
           priority
         />
       </div>
@@ -99,7 +101,6 @@ function Home() {
           >
             Tecnologias Utilizadas:
           </p>
-          {/* Adicionado flex-direction column para mobile, revertendo para row em desktop */}
           <ul
             style={{
               listStyle: "none",
@@ -108,7 +109,7 @@ function Home() {
               fontSize: "0.9em",
               color: "#aaa",
               display: "flex",
-              flexDirection: "column", // Padrão para mobile
+              flexDirection: "column",
               flexWrap: "wrap",
               justifyContent: "center",
               textAlign: "center",
