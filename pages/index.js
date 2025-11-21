@@ -33,17 +33,21 @@ function Home() {
       {/* ========================================================== */}
       {/* 1. SEÇÃO "EM BREVE" (Existing Content)                     */}
       {/* ========================================================== */}
-      <div style={{ margin: "30px 0" }}>
+      <div style={{ margin: "30px 0", width: "100%", height: "auto" }}>
+        {/* Ajustado: Garante que o container de imagem se ajuste */}
         <Image
           src="/logo-sancticom.svg"
           alt="Logo Sancticom"
           width={700}
           height={100}
+          style={{ width: "100%", height: "auto", maxWidth: "700px" }} // Adicionado estilo de ajuste de largura
           priority
         />
       </div>
 
-      <h2>Nosso novo site está em construção!</h2>
+      <h2 style={{ fontSize: "2em", margin: "10px 0" }}>
+        Nosso novo site está em construção!
+      </h2>
 
       <p style={{ fontSize: "1.1em", color: "#ccc", lineHeight: "1.6" }}>
         Estamos trabalhando para lançar a plataforma ideal para ajudar pequenas
@@ -95,6 +99,7 @@ function Home() {
           >
             Tecnologias Utilizadas:
           </p>
+          {/* Adicionado flex-direction column para mobile, revertendo para row em desktop */}
           <ul
             style={{
               listStyle: "none",
@@ -103,8 +108,10 @@ function Home() {
               fontSize: "0.9em",
               color: "#aaa",
               display: "flex",
+              flexDirection: "column", // Padrão para mobile
               flexWrap: "wrap",
               justifyContent: "center",
+              textAlign: "center",
             }}
           >
             {projectDronyImagem.technologies.map((tech, index) => (
@@ -124,7 +131,7 @@ function Home() {
               fontSize: "1em",
               fontWeight: "bold",
               color: "#000",
-              backgroundColor: "#ff8a00", // Using the accent color from DronyImagem site
+              backgroundColor: "#ff8a00",
               borderRadius: "5px",
               textDecoration: "none",
               marginTop: "15px",
@@ -139,7 +146,7 @@ function Home() {
       {/* ========================================================== */}
       <hr style={{ margin: "30px 0", borderColor: "#333" }} />
 
-      <h3>Entre em Contato</h3>
+      <h3 style={{ fontSize: "1.5em" }}>Entre em Contato</h3>
       <p style={{ fontSize: "1.1em", color: "#ccc", lineHeight: "1.6" }}>
         Precisa de um site ou quer mais informações sobre nossos serviços?
         <br />
