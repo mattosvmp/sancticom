@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Head from "next/head";
 import Image from "next/image";
 
@@ -143,51 +142,8 @@ function Home() {
         </div>
       </section>
       {/* ========================================================== */}
-      {/* 3. SEÇÃO DE CONTATO (Existing Content)                     */}
+      {/* 3. SEÇÃO DE CONTATO (Removida)                             */}
       {/* ========================================================== */}
-      <hr style={{ margin: "30px 0", borderColor: "#333" }} />
-
-      <h3 style={{ fontSize: "1.5em" }}>Entre em Contato</h3>
-      <p style={{ fontSize: "1.1em", color: "#ccc", lineHeight: "1.6" }}>
-        Precisa de um site ou quer mais informações sobre nossos serviços?
-        <br />
-        Estamos prontos para conversar!
-      </p>
-
-      <p>
-        <a
-          href="https://api.whatsapp.com/send?phone=5565992423538&text=Ol%C3%A1!%20Visitei%20o%20site%20da%20Sancticom%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es."
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{
-            display: "inline-block",
-            padding: "12px 20px",
-            fontSize: "1.1em",
-            fontWeight: "bold",
-            color: "#fff",
-            backgroundColor: "#25D366",
-            borderRadius: "8px",
-            textDecoration: "none",
-            marginTop: "15px",
-            transition: "background-color 0.3s",
-          }}
-        >
-          Falar pelo WhatsApp
-        </a>
-      </p>
-
-      <p style={{ fontSize: "1.1em", marginTop: "15px" }}>
-        Ou ligue: <strong>(65) 99242-3538</strong>
-      </p>
-
-      <p style={{ marginTop: "30px", marginBottom: "40px" }}>
-        <Link
-          href="/about"
-          style={{ color: "#ff8a00", textDecoration: "underline" }}
-        >
-          Conheça nossa missão
-        </Link>
-      </p>
     </div>
   );
 }
