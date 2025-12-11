@@ -13,9 +13,6 @@ const ProjectCard = ({ project }) => {
     >
       {/* Imagem de Capa com Efeito Zoom */}
       <div className="card-image-container">
-        <div className={`card-overlay ${isHovered ? "active" : ""}`}>
-          <span className="view-text">Visitar Site</span>
-        </div>
         <Image
           src={project.image}
           alt={project.title}
@@ -114,9 +111,15 @@ export default function Home() {
             <Image
               src="/logo-sancticom.svg"
               alt="Sancticom"
-              width={200}
+              width={500}
               height={50}
-              style={{ maxWidth: "100%", height: "auto" }}
+              style={{
+                maxWidth: "100%",
+                height: "auto",
+                backgroundColor: "#fff",
+                borderRadius: "33px",
+                padding: "15px",
+              }}
             />
           </div>
           <h1>
@@ -247,7 +250,7 @@ export default function Home() {
 
         .card-image-container {
           width: 100%;
-          height: 220px;
+          height: 400px;
           position: relative;
           overflow: hidden;
           border-bottom: 1px solid #222;
