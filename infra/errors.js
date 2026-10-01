@@ -38,6 +38,26 @@ export class ServiceError extends Error {
   }
 }
 
+export class ValidationError extends Error {
+  constructor({ message, campos }) {
+    super(message || "Alguns campos não foram preenchidos corretamente.");
+    this.name = "ValidationError";
+    this.action = "Corrija os campos indicados e envie de novo.";
+    this.statusCode = 400;
+    this.campos = campos;
+  }
+
+  toJSON() {
+    return {
+      name: this.name,
+      message: this.message,
+      action: this.action,
+      status_code: this.statusCode,
+      campos: this.campos,
+    };
+  }
+}
+
 export class MethodNotAllowedError extends Error {
   constructor() {
     super("Método não permitido para este endpoint.");
