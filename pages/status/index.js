@@ -1,4 +1,5 @@
 import useSWR from "swr";
+import Seo from "components/Seo";
 
 async function fetchAPI(key) {
   const response = await fetch(key);
@@ -8,11 +9,14 @@ async function fetchAPI(key) {
 
 export default function StatusPage() {
   return (
-    <>
-      <h1>Status</h1>
-      <UpdateAt />
-      <DatabaseStatus />
-    </>
+    <section className="pagina-topo">
+      <div className="container estreito status">
+        <Seo titulo="Status" caminho="/status" semIndice />
+        <h1>Status</h1>
+        <UpdateAt />
+        <DatabaseStatus />
+      </div>
+    </section>
   );
 }
 

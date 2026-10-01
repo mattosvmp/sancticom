@@ -1,371 +1,358 @@
-import Head from "next/head";
 import Image from "next/image";
-import { useState } from "react";
+import Link from "next/link";
+import FormularioContato from "components/FormularioContato";
+import Seo from "components/Seo";
+import site from "lib/site";
+import {
+  IconeCheck,
+  IconeAlvo,
+  IconeBusca,
+  IconeConversa,
+  IconeEditar,
+  IconeIdiomas,
+  IconeSeta,
+  IconeSite,
+} from "components/Icones";
 
-const ProjectCard = ({ project }) => {
-  const [isHovered, setIsHovered] = useState(false);
+const servicos = [
+  {
+    Icone: IconeSite,
+    titulo: "Sites institucionais",
+    texto:
+      "Uma presença profissional que apresenta a sua empresa, os seus serviços e o caminho até você.",
+  },
+  {
+    Icone: IconeAlvo,
+    titulo: "Landing pages",
+    texto:
+      "Páginas focadas em uma oferta ou campanha, pensadas para transformar visita em contato.",
+  },
+  {
+    Icone: IconeIdiomas,
+    titulo: "Sites em vários idiomas",
+    texto:
+      "Conteúdo em português, inglês e espanhol para atender também quem vem de fora.",
+  },
+  {
+    Icone: IconeBusca,
+    titulo: "Pronto para o Google",
+    texto:
+      "Títulos, descrições e estrutura pensados para buscadores, com carregamento rápido.",
+  },
+  {
+    Icone: IconeEditar,
+    titulo: "Conteúdo que você edita",
+    texto:
+      "Um painel simples para atualizar fotos, galerias e textos sem depender de ninguém.",
+  },
+  {
+    Icone: IconeConversa,
+    titulo: "Direto para o WhatsApp",
+    texto:
+      "Botões que levam o visitante para a conversa com você, no aparelho que ele já usa.",
+  },
+];
 
+const projetos = [
+  {
+    nome: "Drony Imagem",
+    segmento: "Filmagem com drones e shows de luzes",
+    descricao:
+      "Site institucional multilíngue, com sistema próprio de tradução em português, inglês e espanhol, galerias interativas e foco em conversão.",
+    tecnologias: [
+      "HTML5 semântico",
+      "CSS3",
+      "JavaScript",
+      "i18n",
+      "Google Analytics 4",
+    ],
+    url: "https://dronyimagem.com.br/",
+    imagem: "/projetos/drony.jpg",
+  },
+  {
+    nome: "L2 Terceirização",
+    segmento: "Limpeza, portaria e jardinagem em Cuiabá",
+    descricao:
+      "Site corporativo com visual em preto e dourado, animações 3D feitas em CSS e contato direto pelo WhatsApp.",
+    tecnologias: ["CSS 3D", "Design responsivo", "SEO", "WhatsApp"],
+    url: "https://l2facilitis.com.br/",
+    imagem: "/projetos/l2.jpg",
+  },
+];
+
+const etapas = [
+  {
+    titulo: "Conversa",
+    texto: "Entendemos o seu negócio e o que o site precisa resolver.",
+  },
+  {
+    titulo: "Planejamento",
+    texto: "Definimos juntos as páginas, o conteúdo e o visual.",
+  },
+  {
+    titulo: "Desenvolvimento",
+    texto: "Construímos o site com você acompanhando cada etapa.",
+  },
+  {
+    titulo: "No ar",
+    texto: "Publicamos o site, pronto para ser encontrado e lembrado.",
+  },
+];
+
+const valores = ["Integridade", "Confiança", "Verdade"];
+
+function Navegador({ src, alt, className, prioridade = false, sizes }) {
   return (
-    <div
-      className="project-card"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      {/* Imagem de Capa com Efeito Zoom */}
-      <div className="card-image-container">
-        <Image
-          src={project.image}
-          alt={project.title}
-          width={600}
-          height={340}
-          style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            transition: "transform 0.5s ease",
-            transform: isHovered ? "scale(1.05)" : "scale(1)",
-          }}
-        />
+    <figure className={`navegador ${className || ""}`}>
+      <div className="navegador-barra" aria-hidden="true">
+        <span />
+        <span />
+        <span />
       </div>
-
-      {/* Conteúdo do Card */}
-      <div className="card-content">
-        <div className="card-header">
-          <h3>{project.title}</h3>
-          <span
-            className={`status-badge ${project.status === "Live" ? "live" : ""}`}
-          >
-            {project.status === "Live" ? "● Online" : "○ Em Breve"}
-          </span>
-        </div>
-
-        <p className="card-description">{project.description}</p>
-
-        <div className="tech-stack">
-          {project.technologies.map((tech, index) => (
-            <span key={index} className="tech-tag">
-              {tech}
-            </span>
-          ))}
-        </div>
-
-        <a
-          href={project.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="btn-visit"
-        >
-          Ver Projeto →
-        </a>
-      </div>
-    </div>
+      <Image
+        src={src}
+        alt={alt}
+        width={1440}
+        height={900}
+        sizes={sizes}
+        priority={prioridade}
+      />
+    </figure>
   );
-};
+}
+
+function Rotulo({ children, claro = false }) {
+  return <p className={`rotulo ${claro ? "rotulo-claro" : ""}`}>{children}</p>;
+}
 
 export default function Home() {
-  const projects = [
-    {
-      title: "DronyImagem",
-      description:
-        "Plataforma institucional multilíngue para serviços de drones. Focada em performance e conversão, com sistema próprio de internacionalização (i18n) e galerias interativas.",
-      link: "https://dronyimagem.com.br/",
-      image: "/project-drony.png",
-      status: "Live",
-      technologies: [
-        "HTML5 Semântico",
-        "CSS3 Variables",
-        "Vanilla JS (ES6+)",
-        "i18n (JSON System)",
-        "Google Analytics 4",
-      ],
-    },
-    {
-      title: "L2 Facilitis",
-      description:
-        "Site corporativo de alto padrão para empresa de terceirização. Apresenta design premium 'Gold & Black', animações 3D CSS (Coverflow) e integração direta com WhatsApp API.",
-      link: "https://l2facilitis.com.br/",
-      image: "/project-l2.jpg",
-      status: "Live",
-      technologies: [
-        "CSS3 3D Transforms",
-        "Vertical Slider Logic",
-        "Responsive Design",
-        "Glassmorphism",
-        "WhatsApp API Integration",
-      ],
-    },
-  ];
+  const dadosEstruturados = {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    name: site.nome,
+    slogan: site.slogan,
+    description: site.descricao,
+    url: site.url,
+    logo: `${site.url}/icon-512.png`,
+    image: `${site.url}/og-image.png`,
+    areaServed: "BR",
+  };
 
   return (
-    <div className="page-wrapper">
-      <Head>
-        <title>Sancticom - Soluções Web com Propósito</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </Head>
+    <>
+      <Seo caminho="/">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(dadosEstruturados),
+          }}
+        />
+      </Seo>
 
-      <main className="main-container">
-        {/* ================= HEADER ================= */}
-        <section className="hero-intro">
-          <div className="logo-area">
-            {/* Se não tiver o logo, usa texto como fallback */}
-            <Image
-              src="/logo-sancticom.svg"
-              alt="Sancticom"
-              width={500}
-              height={50}
-              style={{
-                maxWidth: "100%",
-                height: "auto",
-                backgroundColor: "#fff",
-                borderRadius: "33px",
-                padding: "15px",
-              }}
+      <section className="hero">
+        <div className="container hero-grade">
+          <div className="hero-texto">
+            <Rotulo>Sites para pequenas empresas e empreendedores</Rotulo>
+            <h1>
+              Desenvolvimento web com{" "}
+              <span className="destaque">propósito</span>.
+            </h1>
+            <p className="hero-lead">
+              Transformamos ideias em sites rápidos, bonitos e fáceis de
+              encontrar, para que a sua empresa marque o seu lugar na web.
+            </p>
+            <div className="hero-acoes">
+              <Link className="botao botao-primario" href="/#contato">
+                <IconeConversa className="botao-icone" />
+                Fale conosco
+              </Link>
+              <Link className="botao botao-secundario" href="/#portfolio">
+                Ver portfólio
+              </Link>
+            </div>
+          </div>
+
+          <div className="hero-visual" aria-hidden="true">
+            <Navegador
+              src="/projetos/l2.jpg"
+              alt=""
+              className="navegador-tras"
+              sizes="(max-width: 900px) 70vw, 420px"
+            />
+            <Navegador
+              src="/projetos/drony.jpg"
+              alt=""
+              className="navegador-frente"
+              prioridade
+              sizes="(max-width: 900px) 80vw, 480px"
             />
           </div>
-          <h1>
-            Desenvolvimento Web <br />
-            <span className="highlight">Com Propósito.</span>
-          </h1>
-          <p>
-            Transformamos ideias em experiências digitais de alta performance.
-            Abaixo, confira nossos projetos recentes.
-          </p>
-        </section>
+        </div>
+      </section>
 
-        {/* ================= PORTFOLIO GRID ================= */}
-        <section className="portfolio-section">
-          <h2 className="section-title">Portfólio Selecionado</h2>
+      <section
+        id="servicos"
+        className="secao"
+        aria-labelledby="servicos-titulo"
+      >
+        <div className="container">
+          <div className="secao-cabecalho">
+            <Rotulo>O que fazemos</Rotulo>
+            <h2 id="servicos-titulo">Sites que trabalham pela sua empresa</h2>
+            <p>
+              Do primeiro site ao que já existe e precisa de cuidado: soluções
+              web eficientes, acessíveis e verdadeiras.
+            </p>
+          </div>
 
-          <div className="projects-grid">
-            {projects.map((proj, index) => (
-              <ProjectCard key={index} project={proj} />
+          <ul className="servicos">
+            {servicos.map(({ Icone, titulo, texto }) => (
+              <li key={titulo} className="servico">
+                <span className="servico-icone">
+                  <Icone />
+                </span>
+                <h3>{titulo}</h3>
+                <p>{texto}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section
+        id="portfolio"
+        className="secao secao-creme"
+        aria-labelledby="portfolio-titulo"
+      >
+        <div className="container">
+          <div className="secao-cabecalho">
+            <Rotulo>Portfólio</Rotulo>
+            <h2 id="portfolio-titulo">Projetos no ar</h2>
+            <p>
+              Sites que entregamos e que hoje representam os nossos clientes na
+              web.
+            </p>
+          </div>
+
+          <div className="projetos">
+            {projetos.map((projeto) => (
+              <article key={projeto.nome} className="projeto">
+                <Navegador
+                  src={projeto.imagem}
+                  alt={`Página inicial do site da ${projeto.nome}`}
+                  sizes="(max-width: 900px) 100vw, 560px"
+                />
+                <div className="projeto-conteudo">
+                  <div className="projeto-topo">
+                    <h3>{projeto.nome}</h3>
+                    <span className="selo">No ar</span>
+                  </div>
+                  <p className="projeto-segmento">{projeto.segmento}</p>
+                  <p>{projeto.descricao}</p>
+                  <ul className="tags" aria-label="Tecnologias">
+                    {projeto.tecnologias.map((tecnologia) => (
+                      <li key={tecnologia}>{tecnologia}</li>
+                    ))}
+                  </ul>
+                  <a
+                    className="link-seta"
+                    href={projeto.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Visitar o site
+                    <IconeSeta />
+                    <span className="sr-only">
+                      {" "}
+                      da {projeto.nome} (abre em nova aba)
+                    </span>
+                  </a>
+                </div>
+              </article>
             ))}
           </div>
-        </section>
-      </main>
+        </div>
+      </section>
 
-      {/* ================= CSS STYLES (Styled JSX) ================= */}
-      <style jsx global>{`
-        /* Reset & Base */
-        * {
-          box-sizing: border-box;
-          margin: 0;
-          padding: 0;
-        }
+      <section
+        id="como-trabalhamos"
+        className="secao"
+        aria-labelledby="etapas-titulo"
+      >
+        <div className="container">
+          <div className="secao-cabecalho">
+            <Rotulo>Como trabalhamos</Rotulo>
+            <h2 id="etapas-titulo">Do primeiro contato ao site no ar</h2>
+          </div>
 
-        body {
-          background-color: #050505;
-          color: #ffffff;
-          font-family:
-            "Inter",
-            -apple-system,
-            BlinkMacSystemFont,
-            sans-serif;
-          line-height: 1.6;
-        }
+          <ol className="etapas">
+            {etapas.map((etapa, indice) => (
+              <li key={etapa.titulo} className="etapa">
+                <span className="etapa-numero" aria-hidden="true">
+                  {indice + 1}
+                </span>
+                <h3>{etapa.titulo}</h3>
+                <p>{etapa.texto}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
 
-        .page-wrapper {
-          min-height: 100vh;
-          background: radial-gradient(
-            circle at 50% 0%,
-            #1a1a1a 0%,
-            #050505 100%
-          );
-        }
+      <section className="secao secao-marinho" aria-labelledby="missao-titulo">
+        <div className="container missao">
+          <div>
+            <Rotulo claro>Nossa missão</Rotulo>
+            <h2 id="missao-titulo">Fé e tecnologia podem caminhar juntas.</h2>
+          </div>
+          <div className="missao-texto">
+            <p>
+              A Sancticom nasceu dessa convicção. O nosso trabalho é ajudar
+              pequenas empresas e empreendedores a marcarem o seu lugar na web,
+              com a integridade e a confiança que vêm dos nossos valores.
+            </p>
+            <ul className="valores">
+              {valores.map((valor) => (
+                <li key={valor}>{valor}</li>
+              ))}
+            </ul>
+            <Link className="link-seta link-seta-claro" href="/about">
+              Conheça a Sancticom
+              <IconeSeta />
+            </Link>
+          </div>
+        </div>
+      </section>
 
-        .main-container {
-          max-width: 1000px;
-          margin: 0 auto;
-          padding: 40px 20px 80px;
-        }
-
-        /* Hero Section */
-        .hero-intro {
-          text-align: center;
-          margin-bottom: 80px;
-          padding-top: 40px;
-        }
-
-        .logo-area {
-          margin-bottom: 30px;
-          display: flex;
-          justify-content: center;
-        }
-
-        .hero-intro h1 {
-          font-size: 3rem;
-          font-weight: 800;
-          letter-spacing: -1px;
-          margin-bottom: 15px;
-          line-height: 1.1;
-        }
-
-        .highlight {
-          background: linear-gradient(90deg, #ff8a00, #e52e71);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-        }
-
-        .hero-intro p {
-          color: #888;
-          font-size: 1.2rem;
-          max-width: 600px;
-          margin: 0 auto;
-        }
-
-        /* Portfolio Section */
-        .section-title {
-          font-size: 1.5rem;
-          color: #fff;
-          margin-bottom: 40px;
-          border-left: 4px solid #ff8a00;
-          padding-left: 15px;
-        }
-
-        .projects-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-          gap: 40px;
-        }
-
-        /* CARD DESIGN */
-        .project-card {
-          background: #111;
-          border: 1px solid #222;
-          border-radius: 16px;
-          overflow: hidden;
-          transition:
-            transform 0.3s ease,
-            box-shadow 0.3s ease,
-            border-color 0.3s ease;
-          display: flex;
-          flex-direction: column;
-        }
-
-        .project-card:hover {
-          transform: translateY(-5px);
-          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-          border-color: #333;
-        }
-
-        .card-image-container {
-          width: 100%;
-          height: 400px;
-          position: relative;
-          overflow: hidden;
-          border-bottom: 1px solid #222;
-        }
-
-        .card-overlay {
-          position: absolute;
-          inset: 0;
-          background: rgba(0, 0, 0, 0.6);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          opacity: 0;
-          transition: opacity 0.3s ease;
-          z-index: 2;
-        }
-
-        .card-overlay.active {
-          opacity: 1;
-        }
-
-        .view-text {
-          border: 1px solid #fff;
-          padding: 8px 20px;
-          border-radius: 30px;
-          font-weight: 600;
-          letter-spacing: 1px;
-          text-transform: uppercase;
-          font-size: 0.8rem;
-        }
-
-        .card-content {
-          padding: 25px;
-          display: flex;
-          flex-direction: column;
-          flex-grow: 1;
-        }
-
-        .card-header {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          margin-bottom: 12px;
-        }
-
-        .card-header h3 {
-          font-size: 1.4rem;
-          font-weight: 700;
-          color: #fff;
-        }
-
-        .status-badge {
-          font-size: 0.75rem;
-          padding: 4px 10px;
-          border-radius: 12px;
-          background: #222;
-          color: #666;
-          font-weight: 600;
-        }
-
-        .status-badge.live {
-          background: rgba(80, 250, 123, 0.1);
-          color: #50fa7b;
-        }
-
-        .card-description {
-          color: #aaa;
-          font-size: 0.95rem;
-          margin-bottom: 20px;
-          line-height: 1.5;
-          flex-grow: 1;
-        }
-
-        .tech-stack {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 8px;
-          margin-bottom: 25px;
-        }
-
-        .tech-tag {
-          font-size: 0.75rem;
-          color: #ccc;
-          background: #1a1a1a;
-          padding: 4px 12px;
-          border-radius: 6px;
-          border: 1px solid #333;
-        }
-
-        .btn-visit {
-          display: block;
-          text-align: center;
-          background: #fff;
-          color: #000;
-          font-weight: 700;
-          padding: 12px;
-          border-radius: 8px;
-          transition: background 0.3s ease;
-        }
-
-        .btn-visit:hover {
-          background: #ff8a00;
-          color: #fff;
-        }
-
-        /* Mobile Adjustments */
-        @media (max-width: 768px) {
-          .hero-intro h1 {
-            font-size: 2.2rem;
-          }
-          .projects-grid {
-            grid-template-columns: 1fr;
-          }
-        }
-      `}</style>
-    </div>
+      <section id="contato" className="secao" aria-labelledby="contato-titulo">
+        <div className="container">
+          <div className="contato">
+            <div className="contato-texto">
+              <Rotulo>Contato</Rotulo>
+              <h2 id="contato-titulo">Vamos colocar a sua empresa na web?</h2>
+              <p>
+                Conte a sua ideia e respondemos no e-mail que você informar. A
+                conversa é sem compromisso.
+              </p>
+              <ul className="contato-lista">
+                <li>
+                  <IconeCheck className="contato-check" />
+                  Resposta pelo seu e-mail
+                </li>
+                <li>
+                  <IconeCheck className="contato-check" />
+                  Orçamento sem compromisso
+                </li>
+                <li>
+                  <IconeCheck className="contato-check" />
+                  Seus dados ficam só com a gente
+                </li>
+              </ul>
+            </div>
+            <FormularioContato />
+          </div>
+        </div>
+      </section>
+    </>
   );
 }
