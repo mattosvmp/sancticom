@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /status
+Disallow: /api/
+
+Sitemap: https://sancticom.com.br/sitemap.xml
